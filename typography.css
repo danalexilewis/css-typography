@@ -1,0 +1,106 @@
+/* Typeface */
+
+body { font-family: 'Helvetica Neue', Helvetica, sans-serif; }
+
+
+/* Base Type Scale */
+
+.f1, h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.f2, h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.f3, h3 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.f4, body, p, h4, h5, h6, dl, ol, ul {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+.f5, small {
+  font-size: .875rem;
+  line-height: 1.5rem;
+}
+
+
+/* Responsive Type Scale */
+
+@media screen and (min-width: 48em) { /* Larger text for a desktop display */
+  .f1, h1 {
+    font-size: 4rem;
+    line-height: 5rem;
+  }
+  .f2, h2 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  .f3, h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .f4, body, p, h4, h5, h6, dl, ol, ul {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+  .f5, small {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 64em) { /* A huge desktop or tv */
+  .f1 {
+    font-size: 6rem;
+    line-height: 8rem;
+  }
+  .f2 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}
+
+
+/* Typographical Measures ... not sure this belongs in this module */
+
+.measure { max-width: 48rem; }
+.measure-narrow { max-width: 32rem; }
+.measure-wide { max-width: 60rem; }
+
+
+/* Leading utilities to control line-height */
+
+.leading-1 { line-height: 1.5rem; }
+.leading-2 { line-height: 2rem; }
+.leading-3 { line-height: 3rem; }
+.leading-4 { line-height: 4rem; }
+
+
+/* Weights */
+
+.fw1, ::-webkit-input-placeholder { font-weight: 200; }
+.fw2 { font-weight: 200; }
+.fw3, body { font-weight: 400; } /* default */
+.fw4 { font-weight: 500; }
+.fw5 { font-weight: 600; }
+
+
+/* "Styles" (italic, caps, bold) */
+
+.bold, strong { font-weight: 500; }
+.italic, em { font-style: italic; }
+.caps { text-transform: uppercase; letter-spacing: .2em; }
+.regular { font-weight: 400; font-style: normal; }
+
+
+/* Alignments */
+
+.center-align { text-align: center; }
+.right-align  { text-align: right; }
+.left-align   { text-align: left; }

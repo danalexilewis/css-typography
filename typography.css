@@ -24,7 +24,7 @@ body { font-family: 'Helvetica Neue', Helvetica, sans-serif; }
 
 /* I don't understand how to scale line heights so all line-heights are set
    proportionally to the text size. */
-body { line-height: 1.375; }
+body { line-height: 1.45; }
 
 @media {                                 /* iphone */
   .fs_, small  { font-size: 0.800rem; }

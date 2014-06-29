@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>typography at different screen sizes</title>
+
+  <!--
+    Render the test file in iframes sized to simulate various devices
+  -->
+
+  <style>
+  body {
+    padding: 0;
+    margin: 0;
+    width: 10000px;  /* Let the body grow up to this big */
+  }
+
+  section {
+    /*padding-bottom: 0;*/
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    margin-left: -1px;
+    float: left;
+    border-bottom: 1px solid black;
+  }
+
+  section:first-child {
+    margin-left: 0;
+    border-left: none;
+  }
+
+  section:last-child {
+    border-right: none;
+  }
+
+  header {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  iframe {
+    width: 100%;
+    border: 0;
+    border-top:    1px solid black;
+    margin: 0;
+  }
+  </style>
+</head>
+
+<body>
+
+<main>
+
+  <section style="width: 320px">
+    <header>iPhone</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+  <section style="width: 480px">
+    <header>iPhone landscape</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+  <section style="width: 728px">
+    <header>iPad portrait</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+  <section style="width: 1024px">
+    <header>iPad landscape</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+  <section style="width: 1336px">
+    <header>11inch MacBook</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+  <section style="width: 1680px">
+    <header>15inch MacBook</header>
+    <iframe src="test.html"></iframe>
+  </section>
+
+</main>
+
+<script>
+;[].forEach.call(document.querySelectorAll('iframe'), function(el){
+
+  // wait 500ms for iframes to load
+  setTimeout(function(){
+    el.style.height = el.contentWindow.document.body.scrollHeight + 'px'
+  }, 500)
+
+})
+</script>

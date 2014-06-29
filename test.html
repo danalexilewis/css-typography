@@ -6,86 +6,160 @@
 <link href="typography.css" rel="stylesheet">
 
 <style>
-body { margin-left: 3rem; }
+/* normalize */
+body { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p, dl, ol, ul, hr { margin-top: 0; margin-bottom: 1rem; }
+code, pre { font-size: 100%; }
+
+/* sections basically delineate different tests */
+section {
+  padding-top:   1rem;
+  padding-left:  1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid silver;
+}
+section:last-child { border-bottom: none; }
+section header { margin-bottom: 1rem; }
+
+/* elements with this prop document classes in the css module under test */
+[data-cls] { color: navy; background: #eee; padding: 3px; font-size: 1rem  }
+
+/* increase x-axis padding of test as the screen gets bigger */
+@media screen and (min-width: 769px)  { section { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media screen and (min-width: 1025px) { section { padding-left: 3.0rem; padding-right: 3.0rem; } }
 </style>
 
 </head>
 <body>
 
-<div class="f1">Biggest (.f1)</div>
-<br>
+<!-- sizes -->
 
-<div class="f2">Middle Big (.f2)</div>
-<br>
+<section>
+  <p class="fs----">hugest copy <code data-cls>fs---</code></p>
+</section>
 
-<div class="f3">Small Big (.f3)</div>
-<br>
+<section>
+  <p class="fs---">pretty huge <code data-cls>fs---</code></p>
+</section>
 
-<div class="f4">Regular (.f4)</div>
-<br>
+<section>
+  <p class="fs--">this is big <code data-cls>fs--</code></p>
+</section>
 
-<div>Regular (no size class applied)</div>
-<br>
+<section>
+  <p class="fs-">bigger copy <code data-cls>fs-</code></p>
+</section>
 
-<div class="f5">Small (.f5)</div>
-<br>
+<section>
+  <p class="fs">regular copy <code data-cls>fs</code></p>
+</section>
 
-<hr>
+<section>
+  <p class="fs_">a little smaller <code data-cls>fs_</code></p>
+</section>
 
-<div class="f3">
-  <span class="caps">Caps</span>
-  <span class="italic">Italic</span>
-  <span class="bold">Bold</span>
-  <span class="regular">Regular</span>
-</div>
+<!-- "styles" -->
 
-<hr>
+<section>
+  <p class="fs-">
+    <span class="caps">Caps</span>
+    <span class="italic">Italic</span>
+    <span class="bold">Bold</span>
+    <span class="regular">Regular</span>
+  </p>
+</section>
 
-<div class="f3">
-  <span class="fw1">thinnest</span>
-  <span class="fw2">thin</span>
-  <span class="fw3">normal</span>
-  <span class="fw4">thick</span>
-  <span class="fw5">thickest</span>
-</div>
 
-<hr>
+<section>
+  <p class="fs-">
+    <span class="fw_">thinnest</span>
+    <span class="fw">thin</span>
+    <span class="fw-">normal</span>
+    <span class="fw--">thick</span>
+    <span class="fw---">thickest</span>
+  </p>
+</section>
 
-<br>
+<!-- measures -->
 
-<div class="measure-wide">
-  <div class="f3">Measure Wide <small>~ 18 words per line</small></div>
+<section>
+  <header>Measure Wide <small>~ 21 word lines</small></header>
+  <p class="measure-">
+    <code data-cls>measure-</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
+<section>
+  <header>Measure <small>~ 16 word lines</small></header>
+  <p class="measure">
+    <code data-cls>measure</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-<br>
+<section>
+  <header>Measure <small>~ 10 words lines</small></header>
+  <p class="measure_">
+    <code data-cls>measure_</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-<div class="measure">
-  <div class="f3">Measure Normal <small>~ 14 words per line</small></div>
+<section>
+  <h1>heading 1</h1>
+  <h2>heading 2</h2>
+  <h3>heading 3</h3>
+  <h4>heading 4</h4>
+  <h5>heading 5</h5>
+  <p>paragraph<p>
+</section>
 
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
+<section>
+  <header>Left Aligned</header>
+  <p class="left-align measure">
+    <code data-cls>left-align</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-<br>
+<section>
+  <header>Center Aligned</header>
+  <p class="center-align measure">
+    <code data-cls>center-align</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-<div class="measure-narrow">
-  <div class="f3">Measure Narrow <small>~ 9 words per line</small></div>
+<section>
+  <header>Right Aligned</header>
+  <p class="right-align measure">
+    <code data-cls>right-align</code>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+</section>
 
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
+<section>
+  <header>Preformatted Code</header>
+<pre><code>#!/bin/sh
+echo "foo"</code></pre>
+</section>

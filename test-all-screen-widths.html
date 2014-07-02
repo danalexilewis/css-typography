@@ -39,7 +39,7 @@
   iframe {
     width: 100%;
     border: 0;
-    border-top:    1px solid black;
+    border-top: 1px solid black;
     margin: 0;
   }
   </style>
@@ -49,45 +49,67 @@
 
 <main>
 
-  <section style="width: 320px">
-    <header>iPhone</header>
-    <iframe src="test.html"></iframe>
-  </section>
-
-  <section style="width: 480px">
-    <header>iPhone landscape</header>
-    <iframe src="test.html"></iframe>
-  </section>
-
-  <section style="width: 728px">
-    <header>iPad portrait</header>
-    <iframe src="test.html"></iframe>
-  </section>
-
-  <section style="width: 1024px">
-    <header>iPad landscape</header>
-    <iframe src="test.html"></iframe>
-  </section>
-
-  <section style="width: 1336px">
-    <header>11inch MacBook</header>
-    <iframe src="test.html"></iframe>
-  </section>
-
-  <section style="width: 1680px">
-    <header>15inch MacBook</header>
-    <iframe src="test.html"></iframe>
-  </section>
+  <section data-width="320"  data-label="iPhone"></section>
+  <section data-width="480"  data-label="iPhone landscape"></section>
+  <section data-width="728"  data-label="iPad portrait"></section>
+  <section data-width="1024" data-label="iPad landscape"></section>
+  <section data-width="1336" data-label="11inch MacBook"></section>
+  <section data-width="1680" data-label="15inch MacBook"></section>
 
 </main>
 
+<script type="template">
+  <section style="width: {{width}}px">
+    <header>{{label}} ({{width}}px)</header>
+    <iframe src="test.html"></iframe>
+  </section>
+</script>
+
 <script>
-;[].forEach.call(document.querySelectorAll('iframe'), function(el){
 
-  // wait 500ms for iframes to load
-  setTimeout(function(){
-    el.style.height = el.contentWindow.document.body.scrollHeight + 'px'
-  }, 500)
+// capture template source
+var templateSrc = document.querySelector('[type=template]').innerText
+  .trim()
 
+// render sections
+;[].forEach.call(document.querySelectorAll('section'), function(el){
+  el.outerHTML = renderTemplate(templateSrc, getDataAttrs(el))
 })
+
+// wait 500ms for iframes to load then size them
+setTimeout(function(){
+  ;[].forEach.call(document.querySelectorAll('iframe'), function(el){
+    el.style.height = el.contentWindow.document.body.scrollHeight + 'px'
+  })
+}, 500)
+
+// ---
+
+// Mini templating thing
+
+function renderTemplate(src, args) {
+  return Object.keys(args).reduce(function(mem, argName, i) {
+    return replaceAll(mem, placeholder(argName), args[argName])
+  }, src)
+}
+
+function placeholder(str) { return '{{'+str+'}}' }
+
+function replaceAll(str, strToReplace, replacement) {
+  while (str.indexOf(strToReplace) !== -1) str = str.replace(strToReplace, replacement)
+  return str
+}
+
+// ---
+
+// Get data attributes from element
+
+function getDataAttrs(el) {
+  return [].slice.call(el.attributes)
+    .filter(function(attr){ return attr.name.indexOf('data-') === 0 })
+    .reduce(function(mem, attr) {
+      mem[attr.name.slice(5)] = attr.value ; return mem
+    }, {})
+}
+
 </script>
